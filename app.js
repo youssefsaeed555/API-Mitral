@@ -72,6 +72,9 @@ const posts = require("./routes/posts");
 const doctorCalender = require("./routes/doctorCalender");
 const reservation = require("./routes/reservation");
 
+app.use("/", (req, res, next) => {
+  res.json("welcome in Mitral");
+});
 app.use("/auth", auth);
 app.use("/user", users);
 app.use("/admin", admin);
