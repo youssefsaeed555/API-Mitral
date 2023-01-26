@@ -31,6 +31,8 @@ const limiter = rateLimit({
   message:
     "Too many requestes created from this IP, please try again after an 15 minutes",
 });
+//server favivon
+var favicon = require("serve-favicon");
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -71,10 +73,6 @@ const reviews = require("./routes/reviews");
 const posts = require("./routes/posts");
 const doctorCalender = require("./routes/doctorCalender");
 const reservation = require("./routes/reservation");
-
-app.use("/", (req, res, next) => {
-  res.json("welcome in Mitral");
-});
 app.use("/auth", auth);
 app.use("/user", users);
 app.use("/admin", admin);
@@ -84,6 +82,7 @@ app.use("/calender", doctorCalender);
 app.use(reservation);
 app.use(reviews);
 app.use("/posts", posts);
+app.use("/favicon.ico", express.static("images/favicon.ico"));
 
 //handling unexists routes
 app.all("*", (req, res, next) => {
