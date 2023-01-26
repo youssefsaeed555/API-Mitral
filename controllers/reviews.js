@@ -11,6 +11,9 @@ exports.postReview = asyncHandler(async (req, res, next) => {
     "reviews",
     "user rating"
   );
+  if (!spesficDoc) {
+    return next(new ApiError("غير موجود ", 404));
+  }
   //population to alllow me to access user in reviews
   const newReview = new Reviews({
     name: req.body.name,
