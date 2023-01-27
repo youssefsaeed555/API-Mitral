@@ -82,8 +82,8 @@ app.use("/calender", doctorCalender);
 app.use(reservation);
 app.use(reviews);
 app.use("/posts", posts);
-app.use("/", (req, res, next) => {
-  res.send("./uploads/favicon.ico.png");
+app.all("/", (req, res, next) => {
+  res.json("welcome in mitral");
 });
 
 //handling unexists routes
