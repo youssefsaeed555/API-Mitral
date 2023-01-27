@@ -82,7 +82,9 @@ app.use("/calender", doctorCalender);
 app.use(reservation);
 app.use(reviews);
 app.use("/posts", posts);
-app.use("/favicon.ico", express.static("uploads/favicon.ico"));
+app.use("/", (req, res, next) => {
+  res.send("./uploads/favicon.ico.png");
+});
 
 //handling unexists routes
 app.all("*", (req, res, next) => {
